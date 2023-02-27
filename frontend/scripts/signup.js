@@ -6,15 +6,15 @@
 function SignUp(){
     let email=document.getElementById("em").value;
     let name=document.getElementById("namee").value ;
-    let pass=document.getElementById("pass").value;
-    console.log({email,name,pass})
-    addData({email,name,pass})
+    let password=document.getElementById("pass").value;
+    console.log({email,name,password})
+    addData({email,name,password})
 }
 
-async function addData({email,name,pass}){
-   let payload={name,email,pass}
+async function addData({email,name,password}){
+   let payload={name,email,password}
    console.log(payload)
-    let res=await fetch(`http://localhost:8080/user/register`,{
+    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/user/register",{
         method:"POST",
         headers:{
             "Content-type":"application/json"
@@ -25,11 +25,11 @@ async function addData({email,name,pass}){
     console.log(out)
    if(out.msg==="Successfully Registered"){
  alert(out.msg)
- window.location.href="signIn.html"
+ 
    }
    else
    {
     alert(out.msg)
    }
-    
+   window.location.href="signIn.html"
 }

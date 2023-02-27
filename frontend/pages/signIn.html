@@ -287,14 +287,14 @@ si.addEventListener("click",()=>{
 })
 function SignIn(){
     let email=document.getElementById("em").value;
-    let pass=document.getElementById("pass").value;
-    console.log({email,pass})
-    sendLogin({email,pass})
+    let password=document.getElementById("pass").value;
+    console.log({email,password})
+    sendLogin({email,password})
 }
 
-async function sendLogin({email,pass}){
-    let payload={email,pass};
-    let res=await fetch(`http://localhost:8080/user/login`,{
+async function sendLogin({email,password}){
+    let payload={email,password};
+    let res=await fetch(`https://sore-puce-quail-gown.cyclic.app/user/login`,{
         method:"POST",
         headers:{
             "Content-type":"application/json"

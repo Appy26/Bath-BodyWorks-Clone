@@ -34,7 +34,7 @@ function displaydata(data){
     }
 
 const getData=async ()=>{
-    let res=await fetch("http://localhost:8080/cart",{
+    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/cart/get",{
         method:"GET",
         headers:{
             "Content-type":"application/json"
@@ -58,7 +58,7 @@ getData()
 
 
 async function CartDelete(Id){
-    let res=await fetch(`http://localhost:8080/cart/delete/${Id}`,{
+    let res=await fetch(`https://sore-puce-quail-gown.cyclic.app/cart/delete/${Id}`,{
         method:"DELETE",
         headers:{
             "Content-type":"application/json"

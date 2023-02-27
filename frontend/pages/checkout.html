@@ -206,7 +206,7 @@ btn.addEventListener("click",()=>{
 })
 
 async function checkoutPage(){
-    let res=await fetch("http://localhost:8080/cart/checkout",{
+    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/cart/deleteall",{
         method:"DELETE",
         headers:{
             "Content-type":"application/json"

@@ -1,8 +1,9 @@
 async function getData(){
-    let res=await fetch("http://localhost:8080/bodycare",{
+    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/bodycare/get",{
         method:"GET",
         headers:{
-            "Content-type":"application/json"
+            "Content-type":"application/json",
+            Authorization:localStorage.getItem("token")
         }
     })
     let data=await res.json()
@@ -54,10 +55,11 @@ async function getData(){
 
     // Sorting Functionality
 async function Sort() {
-    let res=await fetch("http://localhost:8080/airfreshner",{
+    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/bodycare/get",{
         method:"GET",
         headers:{
-            "Content-type":"application/json"
+            "Content-type":"application/json",
+            Authorization:localStorage.getItem("token")
         }
     })
     let data=await res.json()
@@ -86,10 +88,11 @@ Sort()
 
 // Filtering Functionality
 async function filter() {
-    let res=await fetch("http://localhost:8080/airfreshner",{
+    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/bodycare/get",{
         method:"GET",
         headers:{
-            "Content-type":"application/json"
+            "Content-type":"application/json",
+            Authorization:localStorage.getItem("token")
         }
     })
     let data=await res.json()
@@ -118,10 +121,11 @@ async function filter() {
 
    async  function category(frag,color) {
     console.log(color);
-        let res=await fetch("http://localhost:8080/airfreshner",{
+        let res=await fetch("https://sore-puce-quail-gown.cyclic.app/bodycare/get",{
             method:"GET",
             headers:{
-                "Content-type":"application/json"
+                "Content-type":"application/json",
+                Authorization:localStorage.getItem("token")
             }
         })
         let data=await res.json()
@@ -146,10 +150,11 @@ async function filter() {
 filter()
 
 async function CartFun(el){
-    let res=await fetch("http://localhost:8080/cart/addcart",{
+    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/cart/add",{
         method:"POST",
         headers:{
-            "Content-type":"application/json"
+            "Content-type":"application/json",
+            Authorization:localStorage.getItem("token")
         },
 body:JSON.stringify(el)
     })

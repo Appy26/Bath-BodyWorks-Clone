@@ -1,42 +1,39 @@
 const express = require('express');
 require("dotenv").config()
-const{connection}=require("./configs/db")
-const{AdminRoute}=require("./routes/Admin.route");
-const { AirFreshnerRoute } = require('./routes/AirFreshner.route');
-const { BodyCareRoute } = require('./routes/BodyCare.route');
-const { CandleRoute } = require('./routes/Candle.Route');
-const { HandShopRoute } = require('./routes/HandShop.route');
-const{UserRoute}=require("./routes/user.route")
-
+const{connection}=require("./Configs/db");
+const { authenticate } = require('./Middleware/authenticate');
+const { AirFreshnerRoute } = require('./Routes/AirFreshner.route');
+const { BDRoute } = require('./Routes/BodyCare.route');
+const { CandleRoute } = require('./Routes/Candle.route');
+const { CartRoute } = require('./Routes/cart.route');
+const { HandShopRoute } = require('./Routes/HandShop.Route');
+const{UserRoute}=require("./Routes/user.route")
 const cors = require('cors');
-const { cartRoute } = require('./routes/cart.route');
-
-
-
-
 
 const app=express()
 app.use(cors())
+
 app.use(express.json())
 
- app.use("/admin",AdminRoute)
-// //app.use(authenticate)
 app.use("/user",UserRoute)
+ 
 
-app.use("/bodycare",BodyCareRoute)
+app.use("/bodycare",BDRoute)
 app.use("/candle",CandleRoute)
 app.use("/airfreshner",AirFreshnerRoute)
-app.use("/cart",cartRoute)
 app.use("/handshop",HandShopRoute)
+// app.use(authenticate)
+app.use("/cart",CartRoute)
 
 
 
-app.listen(process.env.port,async ()=>{
+
+app.listen(process.env.PORT,async ()=>{
     try {
         await connection
-        console.log("connected to db");
+        console.log("connected db")
     } catch (error) {
-        console.log(error.message);
+        console.log(error.message)
     }
-    console.log(`server is running at ${process.env.port}`);
+    console.log("Server 8080")
 })

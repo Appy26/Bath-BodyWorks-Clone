@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-
-const bodyCareSchema=mongoose.Schema({
+const bodycareSchema=mongoose.Schema({
     id:Number,
     name:String,
     price:Number,
@@ -11,9 +10,6 @@ const bodyCareSchema=mongoose.Schema({
     fragnance:String,
 })
 
+const BodyCareModel=mongoose.model("Bodycare",bodycareSchema)
 
-const BodycareModel=mongoose.model("BodyCare",bodyCareSchema)
-
-
-module.exports={BodycareModel}
-
+module.exports={BodyCareModel}

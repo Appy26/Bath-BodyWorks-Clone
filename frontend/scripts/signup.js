@@ -14,7 +14,7 @@ function SignUp(){
 async function addData({email,name,password}){
    let payload={name,email,password}
    console.log(payload)
-    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/user/register",{
+    let res=await fetch("http://localhost:8080/user/register",{
         method:"POST",
         headers:{
             "Content-type":"application/json"

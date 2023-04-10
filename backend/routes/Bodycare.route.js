@@ -1,17 +1,29 @@
+const mongoose = require('mongoose');
 const express = require('express');
-const { BodycareModel } = require('../models/Bodycare.model');
+const { BodyCareModel } = require('../Models/Bodycare.model');
 
 
-const BodyCareRoute=express.Router()
+const BDRoute=express.Router()
+
+BDRoute.post("/add",async (req,res)=>{
+const payload=req.body;
+try {
+   const bodycare=new BodyCareModel(payload)
+   bodycare.save()
+    res.send({"msg":"Successfully added"})
+} catch (error) {
+    res.send({"msg":error.message})
+}
+})
 
 
-BodyCareRoute.get("/",async(req,res)=>{
+BDRoute.get("/get",async (req,res)=>{
     try {
-        const bc=await BodycareModel.find()
-    res.send({"data":bc})
+        const BodyCare=await BodyCareModel.find()
+        res.send({"data":BodyCare})
     } catch (error) {
         res.send({"msg":error.message})
     }
 })
 
-module.exports={BodyCareRoute}
+module.exports={BDRoute}

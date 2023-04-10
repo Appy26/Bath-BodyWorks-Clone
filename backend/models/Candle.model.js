@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-
-const CandleSchema=mongoose.Schema({
+const candleSchema=mongoose.Schema({
     id:Number,
     name:String,
     price:Number,
@@ -11,9 +10,6 @@ const CandleSchema=mongoose.Schema({
     fragnance:String,
 })
 
-
-const CandleModel=mongoose.model("Candle",CandleSchema)
-
+const CandleModel=mongoose.model("Candle",candleSchema)
 
 module.exports={CandleModel}
-

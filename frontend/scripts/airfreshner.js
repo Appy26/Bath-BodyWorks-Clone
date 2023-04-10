@@ -1,5 +1,5 @@
 async function getData(){
-    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/airfreshner/get",{
+    let res=await fetch("http://localhost:8080/airfreshner/get",{
         method:"GET",
         headers:{
             "Content-type":"application/json",
@@ -58,7 +58,7 @@ async function getData(){
 
 // Sorting Functionality
 async function Sort() {
-    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/airfreshner/get",{
+    let res=await fetch("http://localhost:8080/airfreshner/get",{
         method:"GET",
         headers:{
             "Content-type":"application/json",
@@ -91,7 +91,7 @@ Sort()
 
 // Filtering Functionality
 async function filter() {
-    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/airfreshner/get",{
+    let res=await fetch("http://localhost:8080/airfreshner/get",{
         method:"GET",
         headers:{
             "Content-type":"application/json",
@@ -124,7 +124,7 @@ async function filter() {
 
    async  function category(frag,color) {
     console.log(color);
-        let res=await fetch("https://sore-puce-quail-gown.cyclic.app/airfreshner/get",{
+        let res=await fetch("http://localhost:8080/airfreshner/get",{
             method:"GET",
             headers:{
                 "Content-type":"application/json",
@@ -154,7 +154,7 @@ filter()
 
 
 async function CartFun(el){
-    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/cart/add",{
+    let res=await fetch("http://localhost:8080/cart/add",{
         method:"POST",
         headers:{
             "Content-type":"application/json",

@@ -10,9 +10,6 @@ const cartSchema=mongoose.Schema({
     fragnance:String,
 })
 
+const CartModel=mongoose.model("cart",cartSchema)
 
-const cartModel=mongoose.model("cart",cartSchema)
-
-
-module.exports={cartModel}
-
+module.exports={CartModel}

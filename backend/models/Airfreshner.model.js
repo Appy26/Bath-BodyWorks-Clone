@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-
-const airfresherSchema=mongoose.Schema({
+const airfreshnerSchema=mongoose.Schema({
     id:Number,
     name:String,
     price:Number,
@@ -11,9 +10,6 @@ const airfresherSchema=mongoose.Schema({
     fragnance:String,
 })
 
-
-const AirFreshnerModel=mongoose.model("Airfreshner",airfresherSchema)
-
+const AirFreshnerModel=mongoose.model("Airfreshner",airfreshnerSchema)
 
 module.exports={AirFreshnerModel}
-

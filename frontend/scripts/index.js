@@ -1,5 +1,5 @@
 const Signup=()=>{
-    window.location.href="signUp.html"
+    window.location.href="./pages/signup.html"
 }
 
 function carticon(){

@@ -160,7 +160,7 @@ top:0px
 </head>
 <body>
     <div id="nav1">
-        <a href="../pages/index.html"><img style="width:40%"src="../HomePage/bubbles.png" alt=""></a>
+        <a href="../index.html"><img style="width:40%"src="../HomePage/bubbles.png" alt=""></a>
         <div id="navinp"><input type="text" placeholder="Search By Fragrance or Product...">
             <button id="btn">Search</button></div>
        <!-- Avatar icon -->
@@ -294,7 +294,7 @@ function SignIn(){
 
 async function sendLogin({email,password}){
     let payload={email,password};
-    let res=await fetch(`https://sore-puce-quail-gown.cyclic.app/user/login`,{
+    let res=await fetch(`http://localhost:8080/user/login`,{
         method:"POST",
         headers:{
             "Content-type":"application/json"
@@ -306,9 +306,9 @@ async function sendLogin({email,password}){
    localStorage.setItem("token",out.token)
    localStorage.setItem("username",out.Username)
    localStorage.setItem("loginstatus",true)
-   if(out.msg==="Login Successful"){
+   if(out.msg==="Login Successfull"){
     alert(out.msg)
-    window.location.href="index.html"
+    window.location.href="../index.html"
    }
    else
    {

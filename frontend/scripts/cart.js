@@ -34,10 +34,11 @@ function displaydata(data){
     }
 
 const getData=async ()=>{
-    let res=await fetch("https://sore-puce-quail-gown.cyclic.app/cart/get",{
+    let res=await fetch("http://localhost:8080/cart/get",{
         method:"GET",
         headers:{
-            "Content-type":"application/json"
+            "Content-type":"application/json",
+            Authorization:localStorage.getItem("token")
         }
     })
     let data=await res.json()
@@ -58,7 +59,7 @@ getData()
 
 
 async function CartDelete(Id){
-    let res=await fetch(`https://sore-puce-quail-gown.cyclic.app/cart/delete/${Id}`,{
+    let res=await fetch(`http://localhost:8080/cart/delete/${Id}`,{
         method:"DELETE",
         headers:{
             "Content-type":"application/json"

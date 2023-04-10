@@ -1,66 +1,64 @@
 const express = require('express');
+
+const { UserModel } = require('../Models/user.model');
 const bcrypt = require('bcrypt');
-const{UserModel}=require("../models/user.model")
-const jwt=require("jsonwebtoken")
+const jwt=require('jsonwebtoken');
+
 
 
 const UserRoute=express.Router()
 
-UserRoute.post("/register",async (req,res)=>{
-   const{name,email,pass}=req.body
-try {
-    const isalready=await UserModel.findOne({email})
-    console.log(isalready)
-    if(isalready){
-        res.send({"msg":"Already registered please login"})
-    }
-    else
-    {
-        bcrypt.hash(pass, 5, async (err, hash)=> {
-           if(err){
-            res.send({"msg":"Please enter valid details"})
-           }
-           else
-           {
-            const newuser=new UserModel({name,email,pass:hash})
-            newuser.save()
-            res.send({"msg":"Successfully Registered"})
-           }
-        });
-    }
 
-
-} catch (error) {
+UserRoute.post("/register", async(req,res)=>{
+   const{email,password,name}=req.body
+  try {
+    
+      bcrypt.hash(password, 5, async(err, hash) =>{
+        // Store hash in your password DB.
+        if(err){
+            res.send({"msg":"Enter valid email and password"})
+        }
+        else
+        { 
+            const user=new UserModel({email,password:hash,name})
+            user.save()
+            res.send({"msg":"successfully registereed"})
+        }
+    });
+    
+    
+  } catch (error) {
     res.send({"msg":error.message})
-}
-
+  }
+ 
 })
 
 
+
 UserRoute.post("/login",async (req,res)=>{
-    const {email,pass}=req.body
-    try {
-        const user=await UserModel.find({email})
-        if(user.length>0){
-            bcrypt.compare(pass, user[0].pass, async(err, result)=> {
-               if(result===true)
-               {
-                const token = jwt.sign({ userId: user[0]._id }, 'linked');
-                res.send({"msg":"Login Successful","token":token,"Username":user[0].name})
-               }
-               else
-               {
-                res.send({"msg":"Enter Correct Password"})
-               }
-            });
+ const{email,password}=req.body;
+try {
+    const author=await UserModel.find({email})
+  if(author.length>0){
+    bcrypt.compare(password, author[0].password, function(err, result) {
+        if(result){
+            var token = jwt.sign({ author: author[0]._id }, 'book',{expiresIn:"12h"})
+            res.send({"msg":"Login Successfull","token":token})
         }
         else
         {
-            res.send({"msg":"Enter Correct Email or Register First"})
+            res.send({"msg":"wrong password"})
         }
-    } catch (error) {
-        res.send({"msg":error.message})
-    }
+    })
+  }
+  else
+  {
+    res.send({"msg":"wrong email"})
+  }
+    
+} catch (error) {
+    res.send({"msg":error.message})
+}
 })
 
 module.exports={UserRoute}

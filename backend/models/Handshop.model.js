@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const handshopSchema=mongoose.Schema({
     id:Number,
     name:String,
@@ -11,9 +10,6 @@ const handshopSchema=mongoose.Schema({
     fragnance:String,
 })
 
+const HandShopModel=mongoose.model("Handshop",handshopSchema)
 
-const HandshopModel=mongoose.model("Handshop",handshopSchema)
-
-
-module.exports={HandshopModel}
-
+module.exports={HandShopModel}

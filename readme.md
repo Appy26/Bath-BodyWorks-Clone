@@ -1,6 +1,5 @@
-
-
 # Bubbles
+
 ## I tried to cloned Bath and Body Works.Com which is famous for best deal on all Bath products and many more across the globe.
 
 ## Built with
@@ -37,6 +36,7 @@
  </ul>
 
 
+
 ## Some screenshots of the project
 
 ## Home Page 
@@ -62,4 +62,5 @@
 
 
 ### Thanks for reading
+
 
